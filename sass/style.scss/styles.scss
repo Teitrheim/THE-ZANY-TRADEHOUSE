@@ -1,0 +1,10 @@
+// Import Bootstrap’s functions and variables to customize its components
+@import "/node_modules/bootstrap/scss/functions";
+@import "/node_modules/bootstrap/scss/variables";
+
+// Your variable overrides
+$body-bg: #000;
+$body-color: #fff;
+
+// Import the rest of Bootstrap
+@import "/node_modules/bootstrap/scss/bootstrap";
