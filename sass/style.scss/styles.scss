@@ -3,8 +3,341 @@
 @import "/node_modules/bootstrap/scss/variables";
 
 // Your variable overrides
-$body-bg: #000;
+$body-bg: #1d6a76;
 $body-color: #fff;
 
 // Import the rest of Bootstrap
 @import "/node_modules/bootstrap/scss/bootstrap";
+
+.div {
+  background-color: #1d6a76;
+  display: flex;
+  max-width: 480px;
+  width: 100%;
+  flex-direction: column;
+  color: #fff;
+  font-weight: 400;
+  margin: 0 auto;
+}
+.div-2 {
+  display: flex;
+  width: 100%;
+  padding-left: 31px;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+}
+.div-3 {
+  align-self: stretch;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+}
+.img {
+  aspect-ratio: 1.59;
+  object-fit: auto;
+  object-position: center;
+  width: 32px;
+  align-self: end;
+  margin-top: 44px;
+}
+.div-4 {
+  align-self: start;
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 0%;
+  flex-direction: column;
+}
+.img-2 {
+  aspect-ratio: 3.13;
+  object-fit: auto;
+  object-position: center;
+  width: 101px;
+  fill: #1d6a76;
+  align-self: end;
+  max-width: 100%;
+}
+.div-5 {
+  font-family: Roboto, sans-serif;
+  margin-top: 16px;
+}
+.div-6 {
+  text-align: center;
+  font-family: Roboto, sans-serif;
+  line-height: 23px;
+  margin: 22px 0 0 16px;
+}
+.div-7 {
+  font-family: Roboto, sans-serif;
+  justify-content: center;
+  border-radius: 5px;
+  background-color: #888;
+  font-weight: 500;
+  white-space: nowrap;
+  line-height: 137.5%;
+  margin: 17px 0 0 16px;
+  padding: 5px 46px;
+}
+.div-8 {
+  text-align: center;
+  font-family: Roboto, sans-serif;
+  line-height: 150%;
+  white-space: nowrap;
+  margin: 55px 0 0 16px;
+}
+.div-9 {
+  justify-content: space-between;
+  border-radius: 5px;
+  border: 1px solid #000;
+  background-color: #fff;
+  display: flex;
+  width: 215px;
+  max-width: 100%;
+  gap: 20px;
+  color: #000;
+  white-space: nowrap;
+  text-align: center;
+  line-height: 150%;
+  margin: 11px 0 0 16px;
+  padding: 7px 10px;
+}
+.div-10 {
+  font-family: Roboto, sans-serif;
+}
+.div-11 {
+  text-overflow: ellipsis;
+  font-family: Roboto, sans-serif;
+}
+.img-3 {
+  aspect-ratio: 1;
+  object-fit: auto;
+  object-position: center;
+  width: 191px;
+  max-width: 100%;
+  margin: 50px 0 0 16px;
+}
+.div-12 {
+  text-align: center;
+  white-space: nowrap;
+  margin: 17px 0 0 16px;
+  font: 20px Roboto, sans-serif;
+}
+.div-13 {
+  text-align: center;
+  white-space: nowrap;
+  margin: 23px 0 0 16px;
+  font: 18px Roboto, sans-serif;
+}
+.div-14 {
+  text-align: center;
+  font-family: Roboto, sans-serif;
+  white-space: nowrap;
+  margin: 8px 0 0 16px;
+}
+.div-15 {
+  font-family: Roboto, sans-serif;
+  justify-content: center;
+  border-radius: 5px;
+  background-color: #888;
+  font-weight: 500;
+  white-space: nowrap;
+  line-height: 137.5%;
+  margin: 23px 0 0 16px;
+  padding: 5px 36px;
+}
+.img-4 {
+  aspect-ratio: 1;
+  object-fit: auto;
+  object-position: center;
+  width: 191px;
+  max-width: 100%;
+  margin: 44px 0 0 16px;
+}
+.div-16 {
+  text-align: center;
+  white-space: nowrap;
+  margin: 17px 0 0 16px;
+  font: 20px Roboto, sans-serif;
+}
+.div-17 {
+  text-align: center;
+  white-space: nowrap;
+  margin: 23px 0 0 16px;
+  font: 18px Roboto, sans-serif;
+}
+.div-18 {
+  text-align: center;
+  font-family: Roboto, sans-serif;
+  white-space: nowrap;
+  margin: 8px 0 0 16px;
+}
+.div-19 {
+  font-family: Roboto, sans-serif;
+  justify-content: center;
+  border-radius: 5px;
+  background-color: #888;
+  font-weight: 500;
+  white-space: nowrap;
+  line-height: 137.5%;
+  margin: 23px 0 0 16px;
+  padding: 5px 36px;
+}
+.img-5 {
+  aspect-ratio: 1;
+  object-fit: auto;
+  object-position: center;
+  width: 191px;
+  max-width: 100%;
+  margin: 44px 0 0 16px;
+}
+.div-20 {
+  text-align: center;
+  white-space: nowrap;
+  margin: 17px 0 0 16px;
+  font: 20px Roboto, sans-serif;
+}
+.div-21 {
+  text-align: center;
+  white-space: nowrap;
+  margin: 23px 0 0 16px;
+  font: 18px Roboto, sans-serif;
+}
+.div-22 {
+  text-align: center;
+  font-family: Roboto, sans-serif;
+  white-space: nowrap;
+  margin: 8px 0 0 16px;
+}
+.div-23 {
+  font-family: Roboto, sans-serif;
+  justify-content: center;
+  border-radius: 5px;
+  background-color: #888;
+  font-weight: 500;
+  white-space: nowrap;
+  line-height: 137.5%;
+  margin: 23px 0 0 16px;
+  padding: 5px 36px;
+}
+.img-6 {
+  aspect-ratio: 1;
+  object-fit: auto;
+  object-position: center;
+  width: 191px;
+  max-width: 100%;
+  margin: 46px 0 0 16px;
+}
+.div-24 {
+  text-align: center;
+  white-space: nowrap;
+  margin: 17px 0 0 16px;
+  font: 20px Roboto, sans-serif;
+}
+.div-25 {
+  text-align: center;
+  white-space: nowrap;
+  margin: 23px 0 0 16px;
+  font: 18px Roboto, sans-serif;
+}
+.div-26 {
+  text-align: center;
+  font-family: Roboto, sans-serif;
+  white-space: nowrap;
+  margin: 8px 0 0 16px;
+}
+.div-27 {
+  font-family: Roboto, sans-serif;
+  justify-content: center;
+  border-radius: 5px;
+  background-color: #888;
+  font-weight: 500;
+  white-space: nowrap;
+  line-height: 137.5%;
+  margin: 23px 0 0 16px;
+  padding: 5px 36px;
+}
+.div-28 {
+  background-color: #fff;
+  min-height: 2px;
+  margin-top: 22px;
+  width: 100%;
+}
+.div-29 {
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.12);
+  display: flex;
+  margin-top: 9px;
+  gap: 0px;
+  white-space: nowrap;
+  text-align: center;
+  line-height: 140%;
+  padding: 0 20px 8px;
+}
+.div-30 {
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 0%;
+  flex-direction: column;
+  padding: 4px 0;
+}
+.div-31 {
+  text-overflow: ellipsis;
+  align-self: center;
+  font: 20px Roboto, sans-serif;
+}
+.div-32 {
+  text-overflow: ellipsis;
+  font: 10px Roboto, sans-serif;
+}
+.div-33 {
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 0%;
+  flex-direction: column;
+  padding: 4px 0;
+}
+.div-34 {
+  text-overflow: ellipsis;
+  align-self: center;
+  font: 20px Roboto, sans-serif;
+}
+.div-35 {
+  text-overflow: ellipsis;
+  font: 10px Roboto, sans-serif;
+}
+.div-36 {
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 0%;
+  flex-direction: column;
+  padding: 4px 0;
+}
+.div-37 {
+  text-overflow: ellipsis;
+  align-self: center;
+  font: 20px Roboto, sans-serif;
+}
+.div-38 {
+  text-overflow: ellipsis;
+  font: 10px Roboto, sans-serif;
+}
+.div-39 {
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 0%;
+  flex-direction: column;
+  padding: 4px 0;
+}
+.div-40 {
+  text-overflow: ellipsis;
+  align-self: center;
+  font: 20px Roboto, sans-serif;
+}
+.div-41 {
+  text-overflow: ellipsis;
+  font: 10px Roboto, sans-serif;
+}
