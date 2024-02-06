@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "sass": "sass --watch scss:css",
+    "sass": "sass --watch scss:dist/css",
+    "build-css": "sass scss:dist/css",
     "lint": "eslint .",
     "format": "prettier --write ."
   },
