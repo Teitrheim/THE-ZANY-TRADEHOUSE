@@ -4,4 +4,4 @@ Semester Project 2
 
 MAKE NEW BRANCHES AND MERGE TO MASTER!!
 
-npm run build-css
+npm run build
