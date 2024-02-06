@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "sass": "sass --watch scss:dist/css",
+    "watch": "sass --watch src/scss:dist/css & live-server",
     "build": "sass src/scss:dist/css",
     "start": "live-server",
     "lint": "eslint .",
