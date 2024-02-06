@@ -1,3 +1,0 @@
-MAKE NEW BRANCHES AND MERGE TO MASTER!!
-
-npm run build-css
