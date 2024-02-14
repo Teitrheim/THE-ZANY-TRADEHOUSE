@@ -10,7 +10,7 @@
       rel="stylesheet"
     />
   </head>
-
+  <!-- Section for navbar -->
   <body class="bg-primary">
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
       <a class="navbar-brand mx-auto" href="../index.html"
@@ -44,26 +44,54 @@
     </nav>
     <header class="bg mb-4 text-center position-relative">
       <img src="assets/auction1.png" alt="Auction image" class="img-fluid" />
-      <a
-        href="all_auctions.html"
-        class="btn btn-primary bg-white text-black position-absolute start-50 custom-top-20 translate-middle"
-        >All Auctions</a
-      >
     </header>
-    <section
-      class="d-flex flex-column flex-sm-row justify-content-between mb-4"
-    >
-      <input
-        type="text"
-        class="form-control mb-2 mb-sm-0 w-100 w-sm-50 me-sm-2"
-        placeholder="Search"
-      />
-      <select title="option" class="form-select w-100 w-sm-25">
-        <option value="latest">Latest</option>
-        <option value="popular">Most Popular</option>
-      </select>
+    <!-- Section for search/latest  -->
+    <section class="mb-4">
+      <div class="row">
+        <div class="col-sm-6 col-md-3">
+          <input
+            type="text"
+            class="form-control mb-2 mb-sm-0"
+            placeholder="Search"
+          />
+        </div>
+        <div class="col-sm-6 col-md-3 ms-auto">
+          <select title="option" class="form-select">
+            <option value="latest">Latest</option>
+            <option value="popular">Most Popular</option>
+          </select>
+        </div>
+      </div>
     </section>
 
+    <!-- Section for Auction Items -->
+    <section id="auction-items" class="auction-items bg-white">
+      <div class="container">
+        <h3 class="section-title">Live Auctions</h3>
+        <div id="items-grid" class="items-grid">
+          <!-- Dynamic auction items will be inserted here -->
+        </div>
+      </div>
+    </section>
+    <div class="container my-5">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <img
+            src="assets/forsale.jpg"
+            class="img-fluid"
+            alt="For Sale Image"
+          />
+        </div>
+        <div class="col-md-6 text-white">
+          <h2 class="display-4">Featured Auctions</h2>
+          <p class="lead">Explore featured items available for bidding.</p>
+          <button type="button" class="btn btn-primary bg-white text-black">
+            Learn More
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Section footer -->
     <footer class="text-center mt-5 mb-3">
       <p>
         &copy;
