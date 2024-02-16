@@ -19,14 +19,15 @@
       <button
         class="navbar-toggler"
         type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
         aria-controls="navbarNav"
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="text-center">
@@ -42,6 +43,7 @@
         </ul>
       </div>
     </nav>
+
     <header class="bg mb-4 text-center position-relative">
       <img src="assets/auction1.png" alt="Auction image" class="img-fluid" />
       <h1
@@ -79,8 +81,8 @@
       </div>
     </section>
     <!-- For-sale Section -->
-    <div class="container my-5">
-      <div class="row align-items-center">
+    <div class="container my-3">
+      <div class="row align-items-center bordered-section mb-">
         <div class="col-md-6">
           <img
             src="assets/forsale.jpg"
@@ -99,7 +101,7 @@
     </div>
     <section id="about-us" class="py-5">
       <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center bordered-section mt-0">
           <div class="col-lg-8">
             <h2 class="text-center mb-4 text-white">About Us</h2>
             <p class="text-center text-white">
@@ -122,17 +124,17 @@
           </div>
         </div>
         <div class="row mt-5">
-          <div class="col-md-4 text-center text-white">
+          <div class="col-md-4 text-center text-white bordered-section">
             <h3>Thomas Eitrheim</h3>
             <p>Founder & CEO</p>
             <p>John leads our team with a vision to innovate and inspire.</p>
           </div>
-          <div class="col-md-4 text-center text-white">
+          <div class="col-md-4 text-center text-white bordered-section">
             <h3>Thomas Eitrheim</h3>
             <p>Chief Technical Officer</p>
             <p>Jane specializes in technology strategy and implementation.</p>
           </div>
-          <div class="col-md-4 text-center text-white">
+          <div class="col-md-4 text-center text-white bordered-section">
             <h3>Thomas Eitrheim</h3>
             <p>Head of Design</p>
             <p>
@@ -217,17 +219,19 @@
         </div>
         <div class="row">
           <div class="col-12">
-            <p class="copyright">
-              &copy;
-              <?php echo date("Y"); ?>
-              teitrheim. All rights reserved.
-            </p>
+            <p class="copyright">&copy; teitrheim. All rights reserved.</p>
           </div>
         </div>
       </div>
     </footer>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $(".navbar-toggler").click(function () {
+          $("#navbarNav").toggleClass("show");
+        });
+      });
+    </script>
   </body>
 </html>
