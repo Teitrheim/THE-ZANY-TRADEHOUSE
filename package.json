@@ -4,7 +4,7 @@
   "description": "An auction site is looking to launch a website where users can add items to be bid on and bid on items other users have put up for auction.",
   "main": "index.js",
   "scripts": {
-    "watch": "sass --watch src/scss:dist/css",
+    "watch:css": "sass --watch src/scss:dist/css",
     "build": "sass src/scss:dist/css",
     "start": "live-server",
     "lint": "eslint .",
