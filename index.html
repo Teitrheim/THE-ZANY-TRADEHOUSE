@@ -3,88 +3,239 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>talkActive</title>
+    <title>THE ZANY TRADEHOUSE</title>
     <link rel="stylesheet" href="dist/css/styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
     />
   </head>
-
+  <!-- Section for navbar -->
   <body class="bg-primary">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="/">talkActive</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <a class="navbar-brand mx-auto" href="../index.html"
+        >THE ZANY TRADEHOUSE</a
+      >
       <button
         class="navbar-toggler"
         type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
         aria-controls="navbarNav"
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/profile">Profile</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/feed">Posts</a>
-          </li>
-        </ul>
+        <div
+          class="navbar-nav ms-auto d-flex flex-column flex-lg-row align-items-center"
+        >
+          <button
+            type="button"
+            class="btn btn-primary custom-button mb-2 mb-lg-0 me-lg-2"
+          >
+            Log In
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary custom-button mt-2 mt-lg-0"
+          >
+            Register
+          </button>
+        </div>
       </div>
     </nav>
 
-    <div class="container mt-5">
-      <div class="row justify-content-center">
-        <div class="col-6">
-          <div class="text-center mb-4">
-            <h1 class="display-4">talkActive</h1>
-          </div>
-          <form action="/profile" method="get">
-            <div class="text-center mb-2">
-              <h2 class="login">Log in</h2>
-            </div>
-            <div class="mb-3">
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Username/Email"
-                required
-              />
-            </div>
-            <div class="mb-3">
-              <input
-                type="password"
-                class="form-control"
-                placeholder="Password"
-                minlength="8"
-                required
-              />
-            </div>
-            <div class="text-center">
-              <button type="submit" class="btn btn-light custom-button">
-                Log In/Register
-              </button>
-            </div>
-          </form>
+    <header class="bg mb-4 text-center position-relative">
+      <img src="assets/auction1.png" alt="Auction image" class="img-fluid" />
+      <h1
+        class="position-absolute custom-text-position start-50 translate-middle-x text-white"
+      >
+        Your Best Value Proposition
+      </h1>
+    </header>
+    <!-- Section for search/latest  -->
+    <section class="mb-4">
+      <div class="row">
+        <div class="col-sm-6 col-md-3">
+          <input
+            type="text"
+            class="form-control mb-2 mb-sm-0"
+            placeholder="Search"
+          />
+        </div>
+        <div class="col-sm-6 col-md-3 ms-auto">
+          <select title="option" class="form-select">
+            <option value="latest">Latest</option>
+            <option value="popular">Most Popular</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section for Auction Items -->
+    <section id="auction-items" class="auction-items bg-white">
+      <div class="container">
+        <h3 class="section-title">Live Auctions</h3>
+        <div id="items-grid" class="items-grid">
+          <!-- Dynamic auction items will be inserted here -->
+        </div>
+      </div>
+    </section>
+    <!-- For-sale Section -->
+    <div class="container my-3">
+      <div class="row align-items-center bordered-section mb-">
+        <div class="col-md-6">
+          <img
+            src="assets/forsale.jpg"
+            class="img-fluid"
+            alt="For Sale Image"
+          />
+        </div>
+        <div class="col-md-6 text-white">
+          <h2 class="display-4">Featured Auctions</h2>
+          <p class="lead">Explore featured items available for bidding.</p>
+          <button type="button" class="btn btn-primary bg-white text-black">
+            Learn More
+          </button>
         </div>
       </div>
     </div>
-    <footer class="text-center mt-5 mb-3">
-      <p>
-        &copy;
-        <?php echo date("Y"); ?>
-        teitrheim. All rights reserved.
-      </p>
-    </footer>
+    <section id="about-us" class="py-5">
+      <div class="container">
+        <div class="row justify-content-center bordered-section mt-0">
+          <div class="col-lg-8">
+            <h2 class="text-center mb-4 text-white">About Us</h2>
+            <p class="text-center text-white">
+              Welcome to Zany Tradehouse, where we bring excitement and unique
+              treasures to the world of online auctions. Our journey began with
+              a passion for uncovering the extraordinary, the unexpected, and
+              the zany. At Zany Tradehouse, we're more than just an auction
+              site; we're a community of enthusiasts, collectors, and
+              adventurers who thrive on the thrill of discovering hidden gems
+              and rare finds. Our mission is to provide a platform where buyers
+              and sellers can connect, explore, and indulge in the world of
+              eccentric and eclectic items. With a commitment to transparency,
+              integrity, and a touch of whimsy, Zany Tradehouse invites you to
+              join us on this extraordinary journey. Whether you're hunting for
+              hidden treasures or looking to share your zaniest possessions with
+              the world, we're here to make every auction experience
+              unforgettable. Join us at Zany Tradehouse, where the extraordinary
+              becomes the ordinary, and the zany is always within reach.
+            </p>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-md-4 text-center text-white bordered-section">
+            <h3>Thomas Eitrheim</h3>
+            <p>Founder & CEO</p>
+            <p>Thomas leads our team with a vision to innovate and inspire.</p>
+          </div>
+          <div class="col-md-4 text-center text-white bordered-section">
+            <h3>Thomas Eitrheim</h3>
+            <p>Chief Technical Officer</p>
+            <p>Thomas specializes in technology strategy and implementation.</p>
+          </div>
+          <div class="col-md-4 text-center text-white bordered-section">
+            <h3>Thomas Eitrheim</h3>
+            <p>Head of Design</p>
+            <p>
+              Thomas brings creativity and innovation to our design philosophy.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="container my-5">
+      <div class="row align-items-stretch">
+        <div class="col-md-6">
+          <img
+            src="assets/handshake-3100563_640.jpg"
+            class="img-fluid"
+            alt="For Sale Image"
+          />
+        </div>
+        <div class="col-md-6 text-white bordered-section">
+          <div class="content-section">
+            <h2 class="display-4">Hidden Treasures</h2>
+            <p class="lead">
+              Explore our Hidden Treasures section to uncover extraordinary
+              finds waiting to be auctioned. From rare collectibles to hidden
+              gems.
+            </p>
+            <button type="button" class="btn btn-primary bg-white text-black">
+              Learn More
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="review-section bg-light">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-6 text-center text-white">
+            <p class="review-content">
+              "I couldn't be happier with my recent auction experience – the
+              items I bought were even more impressive in person, and the whole
+              process was smooth and enjoyable!"
+            </p>
+            <p class="reviewer-name">Thomas Eitrheim, Front End Developer</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="container-fluid bg-white text-center py-5">
+      <h2 class="mb-4">Ready to get started?</h2>
+      <p class="lead mb-4">Sign up or contact us</p>
+      <a href="contact.html" class="btn btn-primary me-3">Contact Us</a>
+      <a href="contact.html" class="btn btn-primary">Register</a>
+    </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Section footer -->
+    <footer class="bg-dark text-white text-center">
+      <div class="container py-4">
+        <div class="row align-items-center">
+          <div class="col-md-4 mb-0 text-md-left">
+            <p class="mb-0 footer-title">THE ZANY TRADEHOUSE</p>
+          </div>
+          <div class="col-md-4 mb-3">
+            <ul class="list-unstyled footer-links">
+              <li><a href="about.html" class="text-white">About Us</a></li>
+              <li><a href="contact.html" class="text-white">Contact Us</a></li>
+              <li><a href="auctions.html" class="text-white">Auctions</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4 mb-3">
+            <ul class="list-inline social-links">
+              <li class="list-inline-item">
+                <a href="https://instagram.com" class="text-white">Instagram</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://facebook.com" class="text-white">Facebook</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://twitter.com" class="text-white">Twitter</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <p class="copyright">&copy; teitrheim. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $(".navbar-toggler").click(function () {
+          $("#navbarNav").toggleClass("show");
+        });
+      });
+    </script>
   </body>
 </html>

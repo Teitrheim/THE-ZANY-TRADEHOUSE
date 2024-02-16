@@ -1,0 +1,59 @@
+.custom-text-position {
+  top: 10%; /* Adjust this value to move the text lower or higher */
+}
+
+.footer-title {
+  font-size: 1.25rem; /* Adjust the size as needed */
+}
+
+.footer-links li {
+  margin-bottom: 0.5rem; /* Adds more space between the links */
+  font-size: 1.1rem; /* Increase the text size */
+}
+
+.footer-links li a {
+  font-weight: 500; /* Makes the links slightly bolder */
+}
+
+.social-links .list-inline-item {
+  font-size: 1.1rem; /* Increase the text size for consistency */
+  padding-right: 1rem; /* Adds space between social media links */
+}
+
+.social-links .list-inline-item a {
+  font-weight: 500; /* Makes the social media links slightly bolder */
+}
+
+/* Ensures the footer content aligns with the section above */
+.container,
+.container-fluid,
+.container-sm,
+.container-md,
+.container-lg,
+.container-xl,
+.container-xxl {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* Additional styling for the copyright text */
+.copyright {
+  font-size: 1rem; /* Adjust the size as needed */
+}
+
+.bordered-section {
+  border: 2px solid white; /* Adjust the border thickness as needed */
+  padding: 20px; /* Adds some space inside the border */
+  margin: 20px 0; /* Optional: Adds some space outside the border for separation from other sections */
+}
+
+.content-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Adjusts spacing inside the content section */
+}
+
+section.review-section.bg-light {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
