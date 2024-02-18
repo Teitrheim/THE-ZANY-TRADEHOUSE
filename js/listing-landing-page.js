@@ -46,21 +46,19 @@ function displayAuctionItems(items) {
     const itemElement = document.createElement("div");
     itemElement.className = "col-md-3 mb-4"; // Ensures 4 items per row on medium devices and up
     itemElement.innerHTML = `
-          <div class="card h-100">
-            <img src="${
-              item.media.length > 0
-                ? item.media[0].url
-                : "placeholder-image-url"
-            }" class="card-img-top" alt="${
+      <div class="card h-100">
+        <img src="${
+          item.media.length > 0 ? item.media[0].url : "placeholder-image-url"
+        }" class="card-img-top" alt="${
       item.media.length > 0 ? item.media[0].alt : "Placeholder"
-    }" style="height: 200px; object-fit: cover;">
-            <div class="card-body">
-              <h5 class="card-title">${item.title}</h5>
-              <p class="card-text">${item.description}</p>
-              <a href="#" class="btn btn-primary">Bid Now</a>
-            </div>
-          </div>
-      `;
+    }">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">${item.title}</h5>
+          <p class="card-text">${item.description}</p>
+          <a href="#" class="btn btn-primary mt-auto">Bid Now</a>
+        </div>
+      </div>
+    `;
     itemsGrid.appendChild(itemElement);
   });
 }
