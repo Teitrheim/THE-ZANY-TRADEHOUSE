@@ -21,7 +21,33 @@ body {
 }
 
 /* The auction section on landing page */
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ensure the card stretches to fill the container */
+}
+
 .card-img-top {
-  height: 200px;
-  object-fit: cover; /* This will cover the area without stretching the image */
+  max-height: 200px;
+  object-fit: cover; /* This makes the image cover the set height fully */
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-text {
+  flex-grow: 1; /* Ensures the text section expands to fill available space */
+  overflow: hidden; /* Prevents text from overflowing */
+  text-overflow: ellipsis; /* Adds an ellipsis to overflow text */
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limits the text block to three lines */
+  -webkit-box-orient: vertical;
+}
+
+.card-body,
+.card,
+.btn-primary {
+  margin-top: auto; /* Pushes the button to the bottom */
 }
