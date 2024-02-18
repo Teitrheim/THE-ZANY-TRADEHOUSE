@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function fetchAuctionItems() {
-  fetch(`${API_BASE_URL}/auction/listings`) // Corrected API endpoint
+  fetch(`${API_BASE_URL}/auction/listings`)
     .then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -14,11 +14,28 @@ function fetchAuctionItems() {
       return response.json();
     })
     .then((data) => {
-      // Assuming the API returns an array directly. Adjust accordingly.
-      const randomItems = getRandomItems(data.data, 4);
-      displayAuctionItems(randomItems);
+      const uniqueItems = getUniqueItemsByTitleAndImage(data.data);
+      const shuffledItems = shuffleArray(uniqueItems); // Shuffle the unique items
+      displayAuctionItems(shuffledItems.slice(0, 4)); // Display the first four shuffled items
     })
     .catch((error) => console.error("Error fetching auction items:", error));
+}
+
+function getUniqueItemsByTitleAndImage(items) {
+  const unique = [];
+  const uniqueTitlesAndImages = new Set();
+
+  items.forEach((item) => {
+    const identifier = `${item.title}-${
+      item.media.length > 0 ? item.media[0].url : ""
+    }`;
+    if (!uniqueTitlesAndImages.has(identifier)) {
+      uniqueTitlesAndImages.add(identifier);
+      unique.push(item);
+    }
+  });
+
+  return unique;
 }
 
 function displayAuctionItems(items) {
@@ -27,28 +44,31 @@ function displayAuctionItems(items) {
 
   items.forEach((item) => {
     const itemElement = document.createElement("div");
-    itemElement.className = "col-md-3 mb-4"; // Bootstrap grid class for 4 items per row
+    itemElement.className = "col-md-3 mb-4"; // Ensures 4 items per row on medium devices and up
     itemElement.innerHTML = `
-        <div class="card h-100">
-          <img src="${
-            item.media.length > 0 ? item.media[0].url : "placeholder-image-url"
-          }" class="card-img-top" alt="${
+          <div class="card h-100">
+            <img src="${
+              item.media.length > 0
+                ? item.media[0].url
+                : "placeholder-image-url"
+            }" class="card-img-top" alt="${
       item.media.length > 0 ? item.media[0].alt : "Placeholder"
-    }">
-          <div class="card-body">
-            <h5 class="card-title">${item.title}</h5>
-            <p class="card-text">${item.description}</p>
-            <a href="#" class="btn btn-primary">Bid Now</a>
+    }" style="height: 200px; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title">${item.title}</h5>
+              <p class="card-text">${item.description}</p>
+              <a href="#" class="btn btn-primary">Bid Now</a>
+            </div>
           </div>
-        </div>
       `;
     itemsGrid.appendChild(itemElement);
   });
 }
 
-function getRandomItems(items, num) {
-  // Shuffle array
-  const shuffled = items.sort(() => 0.5 - Math.random());
-  // Get sub-array of first n elements after shuffled
-  return shuffled.slice(0, num);
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+  }
+  return array;
 }
