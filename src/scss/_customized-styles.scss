@@ -19,3 +19,9 @@ body {
 .go-back-link:hover {
   text-decoration: underline; /* Adds underline on hover */
 }
+
+/* The auction section on landing page */
+.card-img-top {
+  height: 200px;
+  object-fit: cover; /* This will cover the area without stretching the image */
+}
