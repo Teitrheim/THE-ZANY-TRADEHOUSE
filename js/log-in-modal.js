@@ -1,6 +1,8 @@
+import { API_LOGIN_URL } from "./api-urls.js";
+
 function validateEmail(email) {
   const re =
-    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\\.,;:\s@"]+\.)+[^<>()[\]\\.,;:\s@"]{2,})$/i;
+    /^(([^<>()[]\\.,;:\s@"]+(\.[^<>()[]\\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\\.,;:\s@"]+\.)+[^<>()[\]\\.,;:\s@"]{2,})$/i;
   return re.test(String(email).toLowerCase());
 }
 
@@ -32,7 +34,7 @@ const loginData = {
   password: passwordInput,
 };
 
-fetch(`${API_BASE_URL}/auction/auth/login`, {
+fetch(`${API_LOGIN_URL}`, {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
