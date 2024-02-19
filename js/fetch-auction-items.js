@@ -8,9 +8,10 @@ document.addEventListener("DOMContentLoaded", function () {
       }
       return response.json();
     })
-    .then((data) => {
+    .then((responseData) => {
+      const items = responseData.data; // Assuming the array is nested under responseData.data
       const container = document.getElementById("auction-items-container");
-      data.slice(0, 15).forEach((item) => {
+      items.slice(0, 15).forEach((item) => {
         const itemDiv = document.createElement("div");
         itemDiv.className = "col-md-4 mb-4";
         itemDiv.innerHTML = `
@@ -32,5 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
         container.appendChild(itemDiv);
       });
     })
+
     .catch((error) => console.error("Error fetching auction items:", error));
 });
