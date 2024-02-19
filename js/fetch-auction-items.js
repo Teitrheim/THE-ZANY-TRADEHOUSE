@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return response.json();
     })
     .then((responseData) => {
-      const items = responseData.data; // Assuming the array is nested under responseData.data
+      const items = responseData.data;
       const container = document.getElementById("auction-items-container");
       items.slice(0, 15).forEach((item) => {
         const itemDiv = document.createElement("div");
