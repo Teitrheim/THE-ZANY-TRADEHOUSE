@@ -1,5 +1,5 @@
 import { API_BASE_URL } from "./api-urls.js";
-import $ from "jquery";
+
 document.addEventListener("DOMContentLoaded", function () {
   const registerForm = document.getElementById("registerForm");
 
@@ -11,39 +11,62 @@ document.addEventListener("DOMContentLoaded", function () {
     const password = document.getElementById("passwordInputRegister").value;
     const avatarUrl = document.getElementById("profileImageUrlInput").value;
 
+    // Only include the avatar field if an avatar URL is provided
     const userData = {
       name: name,
       email: email,
       password: password,
-      avatar: {
-        url: avatarUrl,
-        alt: name + "'s avatar",
-      },
+      ...(avatarUrl && {
+        avatar: {
+          url: avatarUrl,
+          alt: name + "'s avatar",
+        },
+      }),
     };
 
-    fetch(`${API_BASE_URL}/auth/register`),
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userData),
-      }
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Registration failed");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          console.log("Registration successful:", data);
-          // Handle success, e.g., show a success message, redirect, etc.
-          alert("Registration successful!");
-          $("#registerModal").modal("hide");
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-          alert("Registration failed: " + error.message);
-        });
+    fetch(`${API_BASE_URL}/auth/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          // If the response is not ok, attempt to parse the error message from the JSON body
+          return response.json().then((errorData) => {
+            // Throw an error that includes the server-provided error message
+            throw new Error(
+              `Registration failed: ${errorData.errors
+                .map((err) => err.message)
+                .join(", ")}`
+            );
+          });
+        }
+        // If the response is ok, parse the JSON body as usual
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Registration successful:", data);
+        alert("Registration successful!");
+
+        // Close the registration modal programmatically
+        const registerModalElement = document.getElementById("registerModal");
+        const registerModalInstance =
+          bootstrap.Modal.getInstance(registerModalElement);
+        if (registerModalInstance) {
+          registerModalInstance.hide();
+        }
+
+        // Open the login modal programmatically
+        const loginModal = new window.bootstrap.Modal(
+          document.getElementById("loginModal")
+        );
+        loginModal.show();
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert(error.message);
+      });
   });
 });
