@@ -1,8 +1,10 @@
+/* eslint-disable no-undef */
 import { API_BASE_URL } from "./api-urls.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   fetchAuctionItems();
   setInterval(fetchAuctionItems, 10000); // Auto-refresh every 10 seconds
+  attachSwitchModalEventListener();
 });
 
 function fetchAuctionItems() {
@@ -55,12 +57,31 @@ function displayAuctionItems(items) {
         <div class="card-body d-flex flex-column">
           <h5 class="card-title">${item.title}</h5>
           <p class="card-text">${item.description}</p>
-          <a href="#" class="btn btn-primary mt-auto">Bid Now</a>
+          <button type="button" class="btn btn-primary mt-auto bid-now-btn" data-bs-toggle="modal" data-bs-target="#registerModal">Bid Now</button>
+
         </div>
       </div>
     `;
     itemsGrid.appendChild(itemElement);
   });
+
+  attachBidNowEventListeners();
+}
+
+function attachBidNowEventListeners() {
+  document
+    .getElementById("items-grid")
+    .addEventListener("click", function (event) {
+      if (event.target.classList.contains("bid-now-btn")) {
+        event.preventDefault(); // Prevent the default action
+        // Open the register modal
+        var registerModal = new bootstrap.Modal(
+          document.getElementById("registerModal"),
+          {}
+        );
+        registerModal.show();
+      }
+    });
 }
 
 function shuffleArray(array) {
@@ -69,4 +90,23 @@ function shuffleArray(array) {
     [array[i], array[j]] = [array[j], array[i]]; // Swap elements
   }
   return array;
+}
+function attachSwitchModalEventListener() {
+  document
+    .getElementById("switchToLogin")
+    .addEventListener("click", function (event) {
+      event.preventDefault();
+      // Close the register modal
+      var registerModal = bootstrap.Modal.getInstance(
+        document.getElementById("registerModal")
+      );
+      registerModal.hide();
+
+      // Open the login modal
+      var loginModal = new bootstrap.Modal(
+        document.getElementById("loginModal"),
+        {}
+      );
+      loginModal.show();
+    });
 }
