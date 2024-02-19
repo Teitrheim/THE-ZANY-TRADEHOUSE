@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>THE ZANY TRADEHOUSE</title>
+    <link rel="stylesheet" href="dist/css/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <!-- Section for navbar -->
+  <body class="bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <a class="navbar-brand mx-auto" href="../index.html"
+        >THE ZANY TRADEHOUSE</a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <div
+          class="navbar-nav ms-auto d-flex flex-column flex-lg-row align-items-center"
+        >
+          <button
+            type="button"
+            class="btn btn-primary custom-button mb-2 mb-lg-0 me-lg-2"
+            data-bs-toggle="modal"
+            data-bs-target="#loginModal"
+            id="logoutButton"
+          >
+            Log Out
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Section footer -->
+    <footer class="bg-dark text-white text-center">
+      <div class="container py-4">
+        <div class="row align-items-center">
+          <div class="col-md-4 mb-0 text-md-left">
+            <p class="mb-0 footer-title">THE ZANY TRADEHOUSE</p>
+          </div>
+          <div class="col-md-4 mb-3">
+            <ul class="list-unstyled footer-links">
+              <li><a href="about.html" class="text-white">About Us</a></li>
+              <li><a href="contact.html" class="text-white">Contact Us</a></li>
+              <li><a href="auctions.html" class="text-white">Auctions</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4 mb-3">
+            <ul class="list-inline social-links">
+              <li class="list-inline-item">
+                <a href="https://instagram.com" class="text-white">Instagram</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://facebook.com" class="text-white">Facebook</a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://twitter.com" class="text-white">Twitter</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <p class="copyright">&copy; teitrheim. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script type="module" src="/js/api-urls.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $(".navbar-toggler").click(function () {
+          $("#navbarNav").toggleClass("show");
+        });
+      });
+    </script>
+  </body>
+</html>

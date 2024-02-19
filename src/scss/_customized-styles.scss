@@ -1,3 +1,7 @@
+body {
+  background-color: $primary !important;
+}
+
 /* Go back section */
 .go-back-link {
   display: inline-flex;
@@ -14,4 +18,65 @@
 
 .go-back-link:hover {
   text-decoration: underline; /* Adds underline on hover */
+}
+
+/* The auction section on landing page */
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ensure the card stretches to fill the container */
+}
+
+.card-img-top {
+  max-height: 200px;
+  object-fit: cover; /* This makes the image cover the set height fully */
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-text {
+  flex-grow: 1; /* Ensures the text section expands to fill available space */
+  overflow: hidden; /* Prevents text from overflowing */
+  text-overflow: ellipsis; /* Adds an ellipsis to overflow text */
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limits the text block to three lines */
+  -webkit-box-orient: vertical;
+}
+
+.card-body,
+.card,
+.btn-primary {
+  margin-top: auto; /* Pushes the button to the bottom */
+}
+
+/* About us section */
+.thick-border {
+  border-width: 4px;
+}
+
+.custom-review-section {
+  margin-top: -50px; /* Moves the section up */
+  padding-top: 50px; /* Increases the top padding */
+}
+
+/* Footer links */
+.mb-extra {
+  margin-bottom: 20px;
+}
+/* Up arrow */
+#scrollTopBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+  z-index: 100;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
 }
