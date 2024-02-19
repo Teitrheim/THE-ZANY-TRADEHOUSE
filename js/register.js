@@ -53,6 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Close the registration modal programmatically
         const registerModalElement = document.getElementById("registerModal");
         const registerModalInstance =
+          // eslint-disable-next-line no-undef
           bootstrap.Modal.getInstance(registerModalElement);
         if (registerModalInstance) {
           registerModalInstance.hide();
