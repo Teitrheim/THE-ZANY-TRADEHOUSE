@@ -210,7 +210,12 @@
         <div class="col-md-6 text-white">
           <h2 class="display-4">Register Today</h2>
           <p class="lead">Everyone who registers gets 1000 credits</p>
-          <button type="button" class="btn btn-primary bg-white text-black">
+          <button
+            type="button"
+            class="btn btn-primary bg-white text-black"
+            data-bs-toggle="modal"
+            data-bs-target="#registerModal"
+          >
             Learn More
           </button>
         </div>
@@ -273,15 +278,18 @@
         </div>
         <div class="col-md-6 text-white bordered-section">
           <div class="content-section">
-            <h2 class="display-4">1000 CREDITS TODAY</h2>
+            <h2 class="display-4">Explore our auctions</h2>
             <p class="lead">
               Explore our Treasures to uncover extraordinary finds waiting to be
-              auctioned. From rare collectibles to hidden gems. Get started
-              today and get 1000 credits
+              auctioned. From rare collectibles to hidden gems. Check out our
+              listing.
             </p>
-            <button type="button" class="btn btn-primary bg-white text-black">
+            <a
+              href="all-auctions.html"
+              class="btn btn-primary bg-white text-black"
+            >
               Learn More
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -302,9 +310,25 @@
     </section>
     <div class="container-fluid bg-white text-center py-5">
       <h2 class="mb-4">Ready to get started?</h2>
-      <p class="lead mb-4">Sign up or contact us</p>
-      <a href="contact.html" class="btn btn-primary me-3">Contact Us</a>
-      <a href="contact.html" class="btn btn-primary">Register</a>
+      <p class="lead mb-4">Sign in or register</p>
+      <!-- Sign In Button -->
+      <button
+        type="button"
+        class="btn btn-primary me-3"
+        data-bs-toggle="modal"
+        data-bs-target="#loginModal"
+      >
+        Log In
+      </button>
+      <!-- Register Button -->
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#registerModal"
+      >
+        Register
+      </button>
     </div>
 
     <!-- Section footer -->
@@ -316,11 +340,15 @@
           </div>
           <div class="col-md-4 mb-3">
             <ul class="list-unstyled footer-links">
-              <li><a href="about.html" class="text-white">About Us</a></li>
-              <li><a href="contact.html" class="text-white">Contact Us</a></li>
-              <li><a href="auctions.html" class="text-white">Auctions</a></li>
+              <li class="mb-extra">
+                <a href="#about-us" class="text-white">About Us</a>
+              </li>
+              <li>
+                <a href="all-auctions.html" class="text-white">Auctions</a>
+              </li>
             </ul>
           </div>
+
           <div class="col-md-4 mb-3">
             <ul class="list-inline social-links">
               <li class="list-inline-item">
