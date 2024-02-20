@@ -48,19 +48,34 @@
         </div>
       </div>
     </nav>
-    <form id="updateAvatarForm">
-      <div class="mb-3">
-        <label for="avatarUrlInput" class="form-label">Avatar URL</label>
-        <input type="url" class="form-control" id="avatarUrlInput" required />
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <form id="updateAvatarForm" class="text-white">
+            <div class="mb-3">
+              <label for="avatarUrlInput" class="form-label">Avatar URL</label>
+              <input
+                type="url"
+                class="form-control form-control-sm"
+                id="avatarUrlInput"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="avatarAltTextInput" class="form-label"
+                >Avatar Alt Text (optional)</label
+              >
+              <input
+                type="text"
+                class="form-control form-control-sm"
+                id="avatarAltTextInput"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Update Avatar</button>
+          </form>
+        </div>
       </div>
-      <div class="mb-3">
-        <label for="avatarAltTextInput" class="form-label"
-          >Avatar Alt Text (optional)</label
-        >
-        <input type="text" class="form-control" id="avatarAltTextInput" />
-      </div>
-      <button type="submit" class="btn btn-primary">Update Avatar</button>
-    </form>
+    </div>
 
     <!-- Section footer -->
     <footer class="bg-dark text-white text-center">
