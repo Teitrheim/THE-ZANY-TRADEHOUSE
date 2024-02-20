@@ -2,9 +2,8 @@
 import { API_BASE_URL } from "./api-urls.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  const accessToken = sessionStorage.getItem("accessToken"); // Assuming you've stored the access token in sessionStorage
-  const profileName = "theUserName"; // You need to replace this with the actual username or method to retrieve it
-
+  const accessToken = sessionStorage.getItem("accessToken");
+  const profileName = "theUserName";
   fetch(`${API_BASE_URL}/auction/profiles/${profileName}`, {
     method: "GET",
     headers: {
@@ -22,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const credits = data.data.credits; // Adjust according to the actual response structure
       document.getElementById(
         "creditsDisplay"
-      ).innerText = `Credits: ${credits}`; // Assuming you have an element with id="creditsDisplay" to show the credits
+      ).innerText = `Credits: ${credits}`;
     })
     .catch((error) => console.error("Error fetching user credits:", error));
 });
