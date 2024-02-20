@@ -59,9 +59,6 @@ function registerUser(userData) {
     .then((data) => {
       console.log("Registration successful:", data);
       alert("Registration successful!");
-      // Here, you can redirect the user or close the modal and show a success message
-      // For example, to close a Bootstrap modal you might use:
-      // $('#registerModal').modal('hide');
     })
     .catch((error) => {
       console.error("Error:", error);
