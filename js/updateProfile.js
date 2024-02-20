@@ -43,7 +43,6 @@ function updateProfile(profileData) {
     .then((data) => {
       console.log("Profile updated successfully:", data);
       alert("Avatar updated successfully!");
-      // Optionally, refresh the page or update the UI to reflect the new avatar
     })
     .catch((error) => {
       console.error("Error updating profile:", error);
