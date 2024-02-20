@@ -3,14 +3,17 @@ import { API_BASE_URL } from "./api-urls.js";
 document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById("loginForm");
 
-  loginForm.addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent the default form submission
+  // Only add the event listener if the loginForm exists on the page
+  if (loginForm) {
+    loginForm.addEventListener("submit", function (event) {
+      event.preventDefault(); // Prevent the default form submission
 
-    const email = document.getElementById("emailInput").value;
-    const password = document.getElementById("passwordInput").value;
+      const email = document.getElementById("emailInput").value;
+      const password = document.getElementById("passwordInput").value;
 
-    loginUser(email, password);
-  });
+      loginUser(email, password);
+    });
+  }
 });
 
 function loginUser(email, password) {
@@ -32,11 +35,13 @@ function loginUser(email, password) {
     })
     .then((data) => {
       console.log("Login successful:", data);
-      const accessToken = data.data.accessToken; // Adjust this line based on the actual structure
+      // Adjust the following line based on the actual structure of your API response
+      const accessToken = data.accessToken; // This might need adjustment based on your API's response structure
 
       if (accessToken) {
         console.log("Access Token:", accessToken);
         sessionStorage.setItem("accessToken", accessToken);
+        // Redirect the user to the profile page or another page as needed
         window.location.href = "/profile.html"; // Adjust the URL as needed
       } else {
         console.error("Login successful but accessToken is missing");
