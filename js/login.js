@@ -3,7 +3,6 @@ import { API_BASE_URL } from "./api-urls.js";
 document.addEventListener("DOMContentLoaded", () => {
   const loginForm = document.getElementById("loginForm");
 
-  // Only add the event listener if the loginForm exists on the page
   if (loginForm) {
     loginForm.addEventListener("submit", function (event) {
       event.preventDefault(); // Prevent the default form submission
@@ -35,8 +34,7 @@ function loginUser(email, password) {
     })
     .then((data) => {
       console.log("Login successful:", data);
-      // Adjust the following line based on the actual structure of your API response
-      const accessToken = data.accessToken; // This might need adjustment based on your API's response structure
+      const accessToken = data.data.accessToken; // Correctly accessing the accessToken
 
       if (accessToken) {
         console.log("Access Token:", accessToken);
@@ -50,6 +48,6 @@ function loginUser(email, password) {
     })
     .catch((error) => {
       console.error("Error:", error);
-      alert("Login failed: Invalid email or password.");
+      alert(error.message);
     });
 }
