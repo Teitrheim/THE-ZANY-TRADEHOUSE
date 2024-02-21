@@ -22,22 +22,33 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function updateProfile(profileData) {
-  // Replace '<name>' with the actual profile name or ID.
-  const apiUrl = `${API_BASE_URL}/auction/profiles/<name>`;
-  const accessToken = sessionStorage.getItem("accessToken"); // Assuming the access token is stored in sessionStorage
+  const username = sessionStorage.getItem("username");
+  const accessToken = sessionStorage.getItem("accessToken");
+  const apiKey = sessionStorage.getItem("apiKey");
+
+  // Check each credential individually and log specific missing items
+  if (!username) console.error("Missing credential: username");
+  if (!accessToken) console.error("Missing credential: access token");
+  if (!apiKey) console.error("Missing credential: API key");
+
+  // Proceed only if all credentials are present
+  if (!username || !accessToken || !apiKey) {
+    return;
+  }
+
+  const apiUrl = `${API_BASE_URL}/auction/profiles/${username}`;
 
   fetch(apiUrl, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${accessToken}`, // Include the access token in the Authorization header
+      Authorization: `Bearer ${accessToken}`,
+      "X-Noroff-API-Key": apiKey,
     },
     body: JSON.stringify(profileData),
   })
     .then((response) => {
-      if (!response.ok) {
-        throw new Error("Failed to update profile");
-      }
+      if (!response.ok) throw new Error("Failed to update profile");
       return response.json();
     })
     .then((data) => {
