@@ -128,6 +128,58 @@
         </div>
       </div>
     </div>
+    <div class="container mt-5">
+      <!-- Centered Title inside the container and above the form -->
+      <h2 class="listingH2 text-white text-center">Create a Listing</h2>
+
+      <div class="row justify-content-center text-white">
+        <div class="col-md-6">
+          <form id="createListingForm">
+            <!-- Form fields -->
+            <div class="mb-3">
+              <label for="listingTitle" class="form-label">Title</label>
+              <input
+                type="text"
+                class="form-control"
+                id="listingTitle"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="listingDescription" class="form-label"
+                >Description</label
+              >
+              <textarea class="form-control" id="listingDescription"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="listingEndsAt" class="form-label">End Date</label>
+              <input
+                type="datetime-local"
+                class="form-control"
+                id="listingEndsAt"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="listingMediaUrl" class="form-label">Media URL</label>
+              <input type="url" class="form-control" id="listingMediaUrl" />
+            </div>
+            <div class="mb-3">
+              <label for="listingMediaAlt" class="form-label"
+                >Media Alt Text</label
+              >
+              <input type="text" class="form-control" id="listingMediaAlt" />
+            </div>
+
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary">
+                Create Listing
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
     <!-- Section footer -->
     <footer class="bg-dark text-white text-center">
@@ -165,5 +217,6 @@
     <script type="module" src="js/profile.js"></script>
     <script type="module" src="js/updateProfile.js"></script>
     <script type="module" src="js/credits.js"></script>
+    <script type="module" src="js/createListing.js"></script>
   </body>
 </html>
