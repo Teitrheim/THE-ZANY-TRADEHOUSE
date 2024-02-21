@@ -32,7 +32,7 @@ function loginUser(email, password) {
         const accessToken = data.data.accessToken;
         console.log("Access Token:", accessToken);
         sessionStorage.setItem("accessToken", accessToken);
-        // Request an API Key
+        // Now, request an API Key
         return fetch(`${API_BASE_URL}/auth/create-api-key`, {
           method: "POST",
           headers: {
