@@ -26,24 +26,33 @@ function loginUser(email, password) {
       password: password,
     }),
   })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Login failed");
-      }
-      return response.json();
-    })
+    .then((response) => response.json())
     .then((data) => {
-      console.log("Login successful:", data);
-      const accessToken = data.data.accessToken; // Correctly accessing the accessToken
-
-      if (accessToken) {
+      if (data.data && data.data.accessToken) {
+        const accessToken = data.data.accessToken;
         console.log("Access Token:", accessToken);
         sessionStorage.setItem("accessToken", accessToken);
-        // Redirect the user to the profile page or another page as needed
-        window.location.href = "/profile.html"; // Adjust the URL as needed
+        // Request an API Key
+        return fetch(`${API_BASE_URL}/auth/create-api-key`, {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
       } else {
-        console.error("Login successful but accessToken is missing");
-        alert("Login was successful but unable to retrieve access token.");
+        throw new Error("Login successful but accessToken is missing");
+      }
+    })
+    .then((response) => response.json())
+    .then((apiKeyData) => {
+      if (apiKeyData.data && apiKeyData.data.key) {
+        const apiKey = apiKeyData.data.key;
+        console.log("API Key:", apiKey);
+        sessionStorage.setItem("apiKey", apiKey);
+        // Redirect the user to the profile page or another page as needed
+        window.location.href = "/profile.html";
+      } else {
+        throw new Error("API Key retrieval failed");
       }
     })
     .catch((error) => {
