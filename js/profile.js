@@ -2,7 +2,17 @@
 import { API_BASE_URL } from "./api-urls.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  fetchUserProfile();
+  const accessToken = sessionStorage.getItem("accessToken");
+  const username = sessionStorage.getItem("username"); // Ensure this is retrieved
+  const apiKey = sessionStorage.getItem("apiKey");
+
+  if (!accessToken || !username || !apiKey) {
+    console.error("Missing credentials: Please log in.");
+    return; // Exit if any credentials are missing
+  }
+
+  // Use these credentials to make API request
+  fetchUserProfile(username, accessToken, apiKey);
 });
 
 function fetchUserProfile() {
