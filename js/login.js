@@ -30,8 +30,10 @@ function loginUser(email, password) {
     .then((data) => {
       if (data.data && data.data.accessToken) {
         const accessToken = data.data.accessToken;
-        console.log("Access Token:", accessToken);
+        const username = data.data.name;
         sessionStorage.setItem("accessToken", accessToken);
+        sessionStorage.setItem("username", username); // Store username for later use
+
         // Now, request an API Key
         return fetch(`${API_BASE_URL}/auth/create-api-key`, {
           method: "POST",
@@ -48,7 +50,8 @@ function loginUser(email, password) {
       if (apiKeyData.data && apiKeyData.data.key) {
         const apiKey = apiKeyData.data.key;
         console.log("API Key:", apiKey);
-        sessionStorage.setItem("apiKey", apiKey);
+        sessionStorage.setItem("apiKey", apiKey); // Store API key for later use
+
         // Redirect the user to the profile page or another page as needed
         window.location.href = "/profile.html";
       } else {
