@@ -1,34 +1,36 @@
-/* eslint-disable no-undef */
-// Assuming api-urls.js is correctly set up and imported
 import { API_BASE_URL } from "./api-urls.js";
 
+// Function to open the bid modal for a specific listing
+function openBidModalForListing(listingId) {
+  const createBidForm = document.getElementById("createBidForm");
+  // Ensure this data attribute is correctly being set
+  createBidForm.dataset.listingId = listingId;
+  var bidModal = new bootstrap.Modal(document.getElementById("placeBidModal"));
+  bidModal.show();
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-  // Example trigger for opening the bid modal with a specific listing ID
-  // This part needs to be integrated with your actual listing elements
-  document.querySelectorAll(".bid-button").forEach((button) => {
-    button.addEventListener("click", function () {
-      const listingId = this.getAttribute("data-listing-id");
-      openBidModalForListing(listingId);
+  // Add event listeners to "Bid Now" buttons
+  document
+    .getElementById("items-grid")
+    .addEventListener("click", function (event) {
+      if (event.target.classList.contains("bid-button")) {
+        const listingId = event.target.dataset.listingId;
+        openBidModalForListing(listingId);
+      }
     });
-  });
 
   const createBidForm = document.getElementById("createBidForm");
-
   createBidForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
-    const listingId = createBidForm.getAttribute("data-listing-id");
+    const listingId = createBidForm.dataset.listingId;
     const bidAmount = document.getElementById("bidAmount").value;
     const accessToken = sessionStorage.getItem("accessToken");
     const apiKey = sessionStorage.getItem("apiKey");
 
     if (!accessToken || !apiKey) {
       console.error("Missing credentials: Please log in.");
-      return;
-    }
-
-    if (!listingId) {
-      console.error("Missing listing ID: Please select a listing to bid on.");
       return;
     }
 
@@ -59,17 +61,14 @@ function placeBid(listingId, amount, accessToken, apiKey) {
     .then((data) => {
       console.log("Bid placed successfully:", data);
       alert("Bid placed successfully!");
-      // Consider closing the modal here if the bid is successful
+      // Close the modal after successful bid
+      var bidModal = bootstrap.Modal.getInstance(
+        document.getElementById("placeBidModal")
+      );
+      bidModal.hide();
     })
     .catch((error) => {
       console.error("Error placing bid:", error);
       alert("Error placing bid: " + error.message);
     });
-}
-
-function openBidModalForListing(listingId) {
-  const createBidForm = document.getElementById("createBidForm");
-  createBidForm.setAttribute("data-listing-id", listingId); // Set the listing ID
-  var bidModal = new bootstrap.Modal(document.getElementById("placeBidModal"));
-  bidModal.show();
 }
