@@ -3,22 +3,24 @@ import { API_BASE_URL } from "./api-urls.js";
 document.addEventListener("DOMContentLoaded", () => {
   const updateAvatarForm = document.getElementById("updateAvatarForm");
 
-  updateAvatarForm.addEventListener("submit", function (event) {
-    event.preventDefault();
+  if (updateAvatarForm) {
+    updateAvatarForm.addEventListener("submit", function (event) {
+      event.preventDefault();
 
-    const avatarUrl = document.getElementById("avatarUrlInput").value;
-    const avatarAltText =
-      document.getElementById("avatarAltTextInput").value || "";
+      const avatarUrl = document.getElementById("avatarUrlInput").value;
+      const avatarAltText =
+        document.getElementById("avatarAltTextInput").value || "";
 
-    const profileData = {
-      avatar: {
-        url: avatarUrl,
-        alt: avatarAltText,
-      },
-    };
+      const profileData = {
+        avatar: {
+          url: avatarUrl,
+          alt: avatarAltText,
+        },
+      };
 
-    updateProfile(profileData);
-  });
+      updateProfile(profileData);
+    });
+  }
 });
 
 function updateProfile(profileData) {
@@ -26,13 +28,9 @@ function updateProfile(profileData) {
   const accessToken = sessionStorage.getItem("accessToken");
   const apiKey = sessionStorage.getItem("apiKey");
 
-  // Check each credential individually and log specific missing items
-  if (!username) console.error("Missing credential: username");
-  if (!accessToken) console.error("Missing credential: access token");
-  if (!apiKey) console.error("Missing credential: API key");
-
-  // Proceed only if all credentials are present
   if (!username || !accessToken || !apiKey) {
+    console.error("Missing credentials: username, access token, or API key");
+    alert("Please log in to update your profile.");
     return;
   }
 
@@ -48,12 +46,15 @@ function updateProfile(profileData) {
     body: JSON.stringify(profileData),
   })
     .then((response) => {
-      if (!response.ok) throw new Error("Failed to update profile");
+      if (!response.ok) {
+        throw new Error("Failed to update profile");
+      }
       return response.json();
     })
     .then((data) => {
       console.log("Profile updated successfully:", data);
       alert("Avatar updated successfully!");
+      // Optionally, refresh the page or update the UI to reflect the new avatar
     })
     .catch((error) => {
       console.error("Error updating profile:", error);
