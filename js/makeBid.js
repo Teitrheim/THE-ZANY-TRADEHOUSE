@@ -2,10 +2,9 @@
 import { API_BASE_URL } from "./api-urls.js";
 
 // Function to open the bid modal for a specific listing
-function openBidModalForListing(listingId) {
+export function openBidModalForListing(listingId) {
   const createBidForm = document.getElementById("createBidForm");
-  // Ensure this data attribute is correctly being set
-  createBidForm.dataset.listingId = listingId;
+  createBidForm.dataset.listingId = listingId; // Set listing ID 
   var bidModal = new bootstrap.Modal(document.getElementById("placeBidModal"));
   bidModal.show();
 }
@@ -39,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-function placeBid(listingId, amount, accessToken, apiKey) {
+export function placeBid(listingId, amount, accessToken, apiKey) {
   fetch(`${API_BASE_URL}/auction/listings/${listingId}/bids`, {
     method: "POST",
     headers: {
@@ -51,13 +50,17 @@ function placeBid(listingId, amount, accessToken, apiKey) {
   })
     .then((response) => {
       if (!response.ok) {
-        return response.json().then((error) => {
+        // If the server response is not ok, throw an error with the response
+        return response.json().then((errorResponse) => {
           throw new Error(
-            `Failed to place bid: ${error.message || "Unknown error"}`
+            `Failed to place bid: ${
+              errorResponse.errors.map((err) => err.message).join(", ") ||
+              "Unknown error"
+            }`
           );
         });
       }
-      return response.json();
+      return response.json(); // Parse the JSON if the response is ok
     })
     .then((data) => {
       console.log("Bid placed successfully:", data);
