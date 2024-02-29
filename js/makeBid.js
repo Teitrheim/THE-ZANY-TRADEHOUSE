@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { API_BASE_URL } from "./api-urls.js";
 
 // Function to open the bid modal for a specific listing
