@@ -1,16 +1,26 @@
 import { API_BASE_URL } from "./api-urls.js";
-import { openBidModalForListing, placeBid } from "./makeBid.js";
+import { openBidModalForListing } from "./makeBid.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   fetchAuctionItems();
-  setInterval(fetchAuctionItems, 10000); // Auto-refresh every 10 seconds
   attachSwitchModalEventListener();
 });
 
 function fetchAuctionItems() {
   fetch(`${API_BASE_URL}/auction/listings`)
-    .then((response) => response.json())
-    .then((data) => displayAuctionItems(data.data))
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Failed to fetch auction items");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      if (data && data.data) {
+        displayAuctionItems(data.data);
+      } else {
+        console.error("No items data found");
+      }
+    })
     .catch((error) => console.error("Error fetching auction items:", error));
 }
 
