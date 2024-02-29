@@ -40,16 +40,16 @@ function displayAuctionItems(items) {
     const itemElement = document.createElement("div");
     itemElement.className = "col-md-4 mb-4";
     itemElement.innerHTML = `
-            <div class="card">
-                <img src="${
-                  item.media[0]?.url || "default-image.jpg"
-                }" class="card-img-top" alt="${item.title}">
-                <div class="card-body">
-                    <h5 class="card-title">${item.title}</h5>
-                    <p class="card-text">${item.description}</p>
-                </div>
-            </div>
-        `;
+        <div class="card">
+          <img src="${
+            item.media[0] ? item.media[0].url : "default-image.jpg"
+          }" class="card-img-top" alt="${item.title}">
+          <div class="card-body">
+            <h5 class="card-title">${item.title}</h5>
+            <p class="card-text">${item.description}</p>
+          </div>
+        </div>
+      `;
     container.appendChild(itemElement);
   });
 }
