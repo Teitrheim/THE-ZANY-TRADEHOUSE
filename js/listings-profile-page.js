@@ -70,9 +70,9 @@ function displayListingItem(item, highestBid) {
     </div>
   `;
   itemsGrid.appendChild(itemElement);
-}
 
-attachBidNowEventListeners();
+  attachBidNowEventListeners();
+}
 
 function attachBidNowEventListeners() {
   document.querySelectorAll(".bid-now-btn").forEach((button) => {
@@ -88,6 +88,7 @@ function attachSwitchModalEventListener() {
   if (switchToLoginButton) {
     switchToLoginButton.addEventListener("click", function (event) {
       event.preventDefault();
+      // Logic to switch modals goes here
     });
   }
 }
