@@ -13,7 +13,7 @@ function fetchAuctionItems() {
       return response.json();
     })
     .then((data) => {
-      displayAuctionItems(data.data.slice(0, 25)); // Display the first 15 items
+      displayAuctionItems(data.data.slice(0, 25)); // Display the first 25 items
     })
     .catch((error) => console.error("Error fetching auction items:", error));
 }
