@@ -87,6 +87,8 @@ function displayListingItem(item, highestBid) {
 function attachBidNowEventListeners() {
   document.querySelectorAll(".bid-now-btn").forEach((button) => {
     button.addEventListener("click", function (event) {
+      event.preventDefault(); // Prevent default action
+      event.stopPropagation(); // Stop the event from bubbling up
       const listingId = event.target.getAttribute("data-listing-id");
       openBidModalForListing(listingId);
     });
