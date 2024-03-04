@@ -73,10 +73,6 @@ export function placeBid(listingId, amount, accessToken, apiKey) {
         document.getElementById("placeBidModal")
       );
       bidModal.hide();
-      var modalBackdrop = document.querySelector(".modal-backdrop");
-      if (modalBackdrop) {
-        modalBackdrop.remove();
-      }
     })
     .catch((error) => {
       console.error("Error placing bid:", error);
