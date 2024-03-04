@@ -4,17 +4,20 @@ import { API_BASE_URL } from "./api-urls.js";
 // Function to open the bid modal for a specific listing
 export function openBidModalForListing(listingId) {
   const createBidForm = document.getElementById("createBidForm");
-  createBidForm.dataset.listingId = listingId; // Set listing ID 
-  var bidModal = new bootstrap.Modal(document.getElementById("placeBidModal"));
+  createBidForm.dataset.listingId = listingId; // Set listing ID
+  var bidModal = new bootstrap.Modal(document.getElementById("placeBidModal"), {
+    keyboard: false,
+  });
   bidModal.show();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   // Add event listeners to "Bid Now" buttons
+  // Using event delegation for dynamically added content
   document
     .getElementById("items-grid")
     .addEventListener("click", function (event) {
-      if (event.target.classList.contains("bid-button")) {
+      if (event.target && event.target.matches(".bid-now-btn")) {
         const listingId = event.target.dataset.listingId;
         openBidModalForListing(listingId);
       }
@@ -70,6 +73,10 @@ export function placeBid(listingId, amount, accessToken, apiKey) {
         document.getElementById("placeBidModal")
       );
       bidModal.hide();
+      var modalBackdrop = document.querySelector(".modal-backdrop");
+      if (modalBackdrop) {
+        modalBackdrop.remove();
+      }
     })
     .catch((error) => {
       console.error("Error placing bid:", error);
