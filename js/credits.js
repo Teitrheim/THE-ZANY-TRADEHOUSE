@@ -2,7 +2,7 @@ import { API_BASE_URL } from "./api-urls.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const accessToken = sessionStorage.getItem("accessToken");
-  const apiKey = sessionStorage.getItem("apiKey"); // Assuming you've stored the API key in sessionStorage
+  const apiKey = sessionStorage.getItem("apiKey");
 
   if (!accessToken || !apiKey) {
     console.log(
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function fetchUserProfile(accessToken, apiKey) {
-  const username = "my_username"; // You should dynamically get the username if possible
+  const username = "my_username"; 
 
   fetch(`${API_BASE_URL}/auction/profiles/${username}`, {
     method: "GET",
