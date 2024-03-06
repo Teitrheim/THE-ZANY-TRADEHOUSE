@@ -1,46 +1,58 @@
 /* eslint-disable no-undef */
 import { API_BASE_URL } from "./api-urls.js";
 
-// Function to open the bid modal for a specific listing
+let bidModal;
+
+// Function to open the bid modal
 export function openBidModalForListing(listingId) {
   const createBidForm = document.getElementById("createBidForm");
   createBidForm.dataset.listingId = listingId; // Set listing ID
-  var bidModal = new bootstrap.Modal(document.getElementById("placeBidModal"), {
-    keyboard: false,
-  });
+
+  // Create the modal instance
+  if (!bidModal) {
+    bidModal = new bootstrap.Modal(document.getElementById("placeBidModal"), {
+      keyboard: false,
+    });
+  }
+
   bidModal.show();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Add event listeners to "Bid Now" buttons
-  // Using event delegation for dynamically added content
-  document
-    .getElementById("items-grid")
-    .addEventListener("click", function (event) {
-      if (event.target && event.target.matches(".bid-now-btn")) {
+  // Attach event listeners to "Bid Now" buttons
+  const itemsGrid = document.getElementById("items-grid");
+  if (itemsGrid) {
+    itemsGrid.addEventListener("click", function (event) {
+      if (event.target.matches(".bid-now-btn")) {
         const listingId = event.target.dataset.listingId;
         openBidModalForListing(listingId);
       }
     });
+  }
 
   const createBidForm = document.getElementById("createBidForm");
-  createBidForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    const listingId = createBidForm.dataset.listingId;
-    const bidAmount = document.getElementById("bidAmount").value;
-    const accessToken = sessionStorage.getItem("accessToken");
-    const apiKey = sessionStorage.getItem("apiKey");
-
-    if (!accessToken || !apiKey) {
-      console.error("Missing credentials: Please log in.");
-      return;
-    }
-
-    placeBid(listingId, bidAmount, accessToken, apiKey);
-  });
+  if (createBidForm) {
+    createBidForm.addEventListener("submit", handleBidSubmission);
+  } else {
+    console.error("Create Bid Form not found");
+  }
 });
 
+function handleBidSubmission(event) {
+  event.preventDefault();
+
+  const listingId = this.dataset.listingId;
+  const bidAmount = document.getElementById("bidAmount").value;
+  const accessToken = sessionStorage.getItem("accessToken");
+  const apiKey = sessionStorage.getItem("apiKey");
+
+  if (!accessToken || !apiKey) {
+    console.error("Missing credentials: Please log in.");
+    return;
+  }
+
+  placeBid(listingId, bidAmount, accessToken, apiKey);
+}
 export function placeBid(listingId, amount, accessToken, apiKey) {
   fetch(`${API_BASE_URL}/auction/listings/${listingId}/bids`, {
     method: "POST",
