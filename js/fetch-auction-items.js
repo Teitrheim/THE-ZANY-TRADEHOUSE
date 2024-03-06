@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { openBidModalForListing } from "./makeBid.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -27,7 +28,7 @@ function fetchAuctionItems(searchTerm = "", sortBy = "latest") {
     params.append("_sort", "popularity");
   }
 
-  // Move the check after the params definition
+  // the check after the params definition
   if (!searchTerm) {
     fetchInitialListings();
     return;
@@ -92,7 +93,19 @@ function attachBidNowEventListeners() {
       if (event.target.classList.contains("bid-now-btn")) {
         event.preventDefault();
 
-        openBidModalForListing();
+        const isLoggedIn = sessionStorage.getItem("accessToken");
+
+        if (!isLoggedIn) {
+          // Trigger the register/login modal if the user is not logged in
+          var registerModal = new bootstrap.Modal(
+            document.getElementById("registerModal"),
+            {}
+          );
+          registerModal.show();
+        } else {
+          const listingId = event.target.getAttribute("data-listing-id");
+          openBidModalForListing(listingId);
+        }
       }
     });
 }
