@@ -19,7 +19,16 @@ export function openBidModalForListing(listingId) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Attach event listeners to "Bid Now" buttons
+  const createBidForm = document.getElementById("createBidForm");
+  if (createBidForm) {
+    // Attach event listeners and other logic here
+    createBidForm.addEventListener("submit", handleBidSubmission);
+  } else {
+    console.warn(
+      "Create Bid Form not found. Skipping bid form initialization."
+    );
+  }
+
   const itemsGrid = document.getElementById("items-grid");
   if (itemsGrid) {
     itemsGrid.addEventListener("click", function (event) {
@@ -28,13 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
         openBidModalForListing(listingId);
       }
     });
-  }
-
-  const createBidForm = document.getElementById("createBidForm");
-  if (createBidForm) {
-    createBidForm.addEventListener("submit", handleBidSubmission);
-  } else {
-    console.error("Create Bid Form not found");
   }
 });
 
