@@ -1,48 +1,88 @@
-/* eslint-disable no-undef */
-document.addEventListener("DOMContentLoaded", function () {
-  fetchAuctionItems();
-  attachSwitchModalEventListener();
+import { openBidModalForListing } from "./makeBid.js";
+
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInput = document.getElementById("searchInput");
+  const sortSelect = document.getElementById("sortSelect");
+
+  searchInput.addEventListener("input", async () => {
+    fetchAuctionItems(searchInput.value, sortSelect.value);
+  });
+
+  sortSelect.addEventListener("change", () => {
+    fetchAuctionItems(searchInput.value, sortSelect.value);
+  });
+
+  fetchInitialListings();
+  attachBidNowEventListeners();
 });
 
-function fetchAuctionItems() {
-  fetch(`https://v2.api.noroff.dev/auction/listings`)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.json();
-    })
+function fetchAuctionItems(searchTerm = "", sortBy = "latest") {
+  let url = `https://v2.api.noroff.dev/auction/listings/search`;
+
+  const params = new URLSearchParams();
+  if (searchTerm) {
+    params.append("q", searchTerm);
+  }
+  if (sortBy === "popular") {
+    params.append("_sort", "popularity");
+  }
+
+  // Move the check after the params definition
+  if (!searchTerm) {
+    fetchInitialListings();
+    return;
+  }
+
+  const queryString = params.toString();
+  const fullUrl = queryString ? `${url}?${queryString}` : url;
+
+  fetch(fullUrl)
+    .then((response) => response.json())
     .then((data) => {
-      displayAuctionItems(data.data.slice(0, 25)); // Display the first 25 items
+      if (data.data.length === 0) {
+        const container = document.getElementById("auction-items-container");
+        container.innerHTML = `<div class="d-flex justify-content-center align-items-center">
+                                  <p class="text-center">We couldn't find any matches for "${searchTerm}". Please try something else.</p>
+                                </div>`;
+      } else {
+        displayAuctionItems(data.data);
+      }
     })
     .catch((error) => console.error("Error fetching auction items:", error));
 }
 
+async function fetchInitialListings() {
+  let url = `https://v2.api.noroff.dev/auction/listings`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    displayAuctionItems(data.data.slice(0, 25));
+  } catch (error) {
+    console.error("Error fetching auction items:", error);
+  }
+}
+
 function displayAuctionItems(items) {
   const container = document.getElementById("auction-items-container");
-  container.innerHTML = ""; // Clear existing items
+  container.innerHTML = "";
 
   items.forEach((item) => {
     const itemElement = document.createElement("div");
     itemElement.className = "col-md-4 mb-4";
     itemElement.innerHTML = `
-      <div class="card h-100">
-        <img src="${
-          item.media.length > 0 ? item.media[0].url : "placeholder-image-url"
-        }" class="card-img-top" alt="${
-      item.media.length > 0 ? item.media[0].alt : "Placeholder"
-    }">
-        <div class="card-body">
-          <h5 class="card-title">${item.title}</h5>
-          <p class="card-text">${item.description}</p>
-          <button type="button" class="btn btn-primary mt-auto bid-now-btn" data-bs-toggle="modal" data-bs-target="#registerModal">Bid Now</button>
-        </div>
-      </div>
-    `;
+    <div class="card h-100">
+    <img src="${
+      item.media[0] ? item.media[0].url : "default-image.jpg"
+    }" class="object-fit-cover h-50" alt="${item.title}">
+    <div class="card-body d-flex flex-column">
+        <h5 class="card-title">${item.title}</h5>
+        <p class="card-text">${item.description}</p>
+        <button type="button" class="btn btn-primary mt-auto bid-now-btn">Bid Now</button>
+    </div>
+</div>`;
     container.appendChild(itemElement);
   });
-
-  attachBidNowEventListeners();
 }
 
 function attachBidNowEventListeners() {
@@ -50,33 +90,9 @@ function attachBidNowEventListeners() {
     .getElementById("auction-items-container")
     .addEventListener("click", function (event) {
       if (event.target.classList.contains("bid-now-btn")) {
-        event.preventDefault(); // Prevent the default action
-        // Open the register modal
-        var registerModal = new bootstrap.Modal(
-          document.getElementById("registerModal"),
-          {}
-        );
-        registerModal.show();
+        event.preventDefault();
+
+        openBidModalForListing();
       }
-    });
-}
-
-function attachSwitchModalEventListener() {
-  document
-    .getElementById("switchToLogin")
-    .addEventListener("click", function (event) {
-      event.preventDefault();
-      // Close the register modal
-      var registerModal = bootstrap.Modal.getInstance(
-        document.getElementById("registerModal")
-      );
-      registerModal.hide();
-
-      // Open the login modal
-      var loginModal = new bootstrap.Modal(
-        document.getElementById("loginModal"),
-        {}
-      );
-      loginModal.show();
     });
 }
