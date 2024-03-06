@@ -82,11 +82,15 @@ export function placeBid(listingId, amount, accessToken, apiKey) {
     .then((data) => {
       console.log("Bid placed successfully:", data);
       alert("Bid placed successfully!");
+
       // Close the modal after successful bid
       var bidModal = bootstrap.Modal.getInstance(
         document.getElementById("placeBidModal")
       );
       bidModal.hide();
+
+      // Refresh the page
+      window.location.reload();
     })
     .catch((error) => {
       console.error("Error placing bid:", error);
