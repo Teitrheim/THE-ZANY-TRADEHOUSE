@@ -2,33 +2,66 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("searchInput");
   const sortSelect = document.getElementById("sortSelect");
 
-  // Initial fetch of auction items
-  fetchAuctionItems();
+  // Fetch and display all auction items
+  fetchAllAuctionItems().then(displayAuctionItems);
 
   // Event listener for search input
   searchInput.addEventListener("input", () => {
-    fetchAuctionItems(searchInput.value, sortSelect.value);
+    const searchTerm = searchInput.value;
+    const sortBy = sortSelect.value;
+    fetchAllAuctionItems().then((items) => {
+      const filteredAndSortedItems = filterAndSortItems(
+        items,
+        searchTerm,
+        sortBy
+      );
+      displayAuctionItems(filteredAndSortedItems);
+    });
   });
 
   // Event listener for sort select
   sortSelect.addEventListener("change", () => {
-    fetchAuctionItems(searchInput.value, sortSelect.value);
+    const searchTerm = searchInput.value;
+    const sortBy = sortSelect.value;
+    fetchAllAuctionItems().then((items) => {
+      const filteredAndSortedItems = filterAndSortItems(
+        items,
+        searchTerm,
+        sortBy
+      );
+      displayAuctionItems(filteredAndSortedItems);
+    });
   });
 });
 
-function fetchAuctionItems(searchTerm = "", sortBy = "latest") {
+async function fetchAllAuctionItems() {
   let url = `https://v2.api.noroff.dev/auction/listings`;
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data.data;
+  } catch (error) {
+    console.error("Error fetching auction items:", error);
+    return []; // Return an empty array in case of error
+  }
+}
 
-  // Add query parameters for search and sort
-  const params = new URLSearchParams();
-  if (searchTerm) params.append("q", searchTerm);
-  if (sortBy === "popular") params.append("_sort", "popularity");
+function filterAndSortItems(items, searchTerm = "", sortBy = "latest") {
+  // Filter items based on partial match of the searchTerm
+  const filteredItems = items.filter(
+    (item) =>
+      item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
-  // Fetch data from the API
-  fetch(`${url}?${params.toString()}`)
-    .then((response) => response.json())
-    .then((data) => displayAuctionItems(data.data))
-    .catch((error) => console.error("Error fetching auction items:", error));
+  // Sort items based on the sortBy criteria
+  if (sortBy === "popular") {
+    filteredItems.sort((a, b) => b.popularity - a.popularity);
+  } else {
+    filteredItems.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+  }
+
+  return filteredItems;
 }
 
 function displayAuctionItems(items) {
