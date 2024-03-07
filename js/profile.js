@@ -49,10 +49,29 @@ function displayProfile(profile) {
   document.getElementById("profileEmail").textContent = profile.email;
   document.getElementById("profileBio").textContent =
     profile.bio || "No bio available";
-  document.getElementById("profileAvatar").src = profile.avatar.url;
-  document.getElementById("profileAvatar").alt = profile.avatar.alt;
-  document.getElementById("profileBanner").src = profile.banner.url;
-  document.getElementById("profileBanner").alt = profile.banner.alt;
+
+  // Set avatar image or a default placeholder if the URL is missing
+  const avatarUrl =
+    profile.avatar && profile.avatar.url
+      ? profile.avatar.url
+      : "https://via.placeholder.com/150";
+  document.getElementById("profileAvatar").src = avatarUrl;
+  document.getElementById("profileAvatar").alt =
+    profile.avatar && profile.avatar.alt
+      ? profile.avatar.alt
+      : "Default avatar";
+
+  // Set banner image or a default placeholder if the URL is missing
+  const bannerUrl =
+    profile.banner && profile.banner.url
+      ? profile.banner.url
+      : "https://via.placeholder.com/600x200";
+  document.getElementById("profileBanner").src = bannerUrl;
+  document.getElementById("profileBanner").alt =
+    profile.banner && profile.banner.alt
+      ? profile.banner.alt
+      : "Default banner";
+
   document.getElementById(
     "credits"
   ).textContent = `Credits: ${profile.credits}`;
