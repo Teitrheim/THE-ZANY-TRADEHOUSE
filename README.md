@@ -2,10 +2,9 @@
 
 Auction Website
 
-Introduction
 Welcome to the THE ZANY TRADEHOUSE! This project is a dynamic web application that allows users to browse, search for, and bid on auction listings. Built with modern web technologies, this platform aims to provide a seamless and interactive experience for both buyers and sellers.
 
-Features
+Features:
 User Authentication: Secure login and registration system for users.
 
 Auction Listings: Users can view a list of available auction items, complete with images, descriptions, and current bid information.
