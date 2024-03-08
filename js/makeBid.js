@@ -79,8 +79,7 @@ export function placeBid(listingId, amount, accessToken, apiKey) {
       }
       return response.json(); // Parse the JSON if the response is ok
     })
-    .then((data) => {
-      console.log("Bid placed successfully:", data);
+    .then(() => {
       alert("Bid placed successfully!");
 
       // Close the modal after successful bid

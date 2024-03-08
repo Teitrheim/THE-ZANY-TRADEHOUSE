@@ -42,8 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
         throw new Error("Failed to create listing");
       }
 
-      const responseData = await response.json();
-      console.log("Listing created successfully:", responseData);
+      await response.json();
+
       alert("Listing created successfully!");
     } catch (error) {
       console.error("Error creating listing:", error);
