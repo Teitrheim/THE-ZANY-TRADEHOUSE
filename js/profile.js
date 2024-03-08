@@ -47,9 +47,15 @@ function fetchUserProfile() {
 function displayProfile(profile) {
   document.getElementById("profileName").textContent = profile.name;
   document.getElementById("profileEmail").textContent = profile.email;
-  document.getElementById("profileBio").textContent =
-    profile.bio || "No bio available";
-
+  // Check if bio is available and display it; otherwise, hide the bio section or display a default message
+  const bioText = profile.bio || "No bio available";
+  const bioElement = document.getElementById("profileBio");
+  if (profile.bio) {
+    bioElement.textContent = bioText;
+    bioElement.style.display = ""; // Ensure it's visible if bio exists
+  } else {
+    bioElement.style.display = "none";
+  }
   // Set avatar image or a default placeholder if the URL is missing
   const avatarUrl =
     profile.avatar && profile.avatar.url
