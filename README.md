@@ -1,5 +1,9 @@
 # THE-ZANY-TRADEHOUSE
 
+Repository: https://github.com/Teitrheim/THE-ZANY-TRADEHOUSE.git
+
+Hosted Demo: https://thezanytradehouse.netlify.app
+
 Auction Website
 
 Welcome to the THE ZANY TRADEHOUSE! This project is a dynamic web application that allows users to browse, search for, and bid on auction listings. Built with modern web technologies, this platform aims to provide a seamless and interactive experience for both buyers and sellers.
@@ -44,7 +48,7 @@ Build command: npm run build.
 
 Feel free to create your own accounts to test the registration and login functionalities.
 
-Special Instructions for Testers
+Instructions for Testers:
 Bidding Functionality: Ensure you are logged in to place bids. Test placing bids higher and lower than the current highest bid to see the validation in action.
 Search and Sort: Test the search functionality with partial and complete item names. Sort the listings by different criteria and observe the order changes.
 Responsive Design: Please test the website on various devices and screen sizes to ensure the layout and functionalities work as expected.
@@ -55,4 +59,4 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 
 Acknowledgments
 Special thanks to all contributors and testers.
-Icons and images are courtesy of FontAwesome and Unsplash.
+Icons and images are courtesy of FontAwesome, Pixabay, Favicon and Unsplash.
